@@ -116,7 +116,7 @@ var _ = {};
 	var fok = window[functionOrKey];
   	for (var i=0; i<collection.length; i++) {
 		var pusher;
-		if (fok === "function") {pusher=fok.apply(collection[i], args);}
+		if (typeof fok === "function") {pusher=fok.apply(collection[i], args);}
 		else {pusher = functionOrKey.apply(collection[i], args);}
 		array.push(pusher);
 	}
