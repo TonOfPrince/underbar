@@ -115,7 +115,7 @@ var _ = {};
   	var array = [];
   	for (var i=0; i<collection.length; i++) {
 		var pusher = functionOrKey.apply(collection[i], args);
-		array=push(pusher);
+		array.push(pusher);
 	}
 	return array;
   };
