@@ -113,7 +113,7 @@ var _ = {};
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
   	var array = [];
-  	for (i=0; i<collection.length; i++) {
+  	for (var i=0; i<collection.length; i++) {
 		var pusher = functionOrKey.apply(collection[i], args);
 		array=push(pusher);
 	}
