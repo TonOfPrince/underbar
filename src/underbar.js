@@ -113,10 +113,11 @@ var _ = {};
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
   	var array = [];
-	var fok = window[functionOrKey];
+	;var fok = window[functionOrKey]['apply'](co;
+	;var fork = eval(
   	for (var i=0; i<collection.length; i++) {
 		var pusher;
-		if (typeof functionOrKey === "string") {pusher=fok.apply(collection[i], args);}  
+		if (typeof functionOrKey === "string") {pusher=window[functionOrKey]['apply'](collection[i], args);}  
 		else {pusher = functionOrKey.apply(collection[i], args);}
 		array.push(pusher);
 	}
