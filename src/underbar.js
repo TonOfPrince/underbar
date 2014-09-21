@@ -76,7 +76,7 @@ var _ = {};
   _.filter = function(collection, test) {
   	var arr = [];
 	each(collection,function(item) {
-		if (test(item)==true)) {
+		if (test(item)==true) {
 			arr.push(item);
 		}
 	});
