@@ -103,9 +103,17 @@ var _ = {};
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
-    var arr = [];
-	var opp = _.filter(collection,test);
-	
+    //var arr = [];
+	var arr = _.filter(collection,function(item) {
+		if (test(item)==false) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	});
+	return arr;
   };
 
   // Produce a duplicate-free version of the array.
