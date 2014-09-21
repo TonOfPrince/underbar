@@ -51,7 +51,7 @@ var _ = {};
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
   	for (var i=0; i <collection.length;i++) {
-		collection[i].iterator();
+		iterator(collection[i]);
 	}
   };
 
