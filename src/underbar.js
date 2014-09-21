@@ -79,7 +79,7 @@ var _ = {};
 		if (test(item)==true)) {
 			arr.push(item);
 		}
-	}
+	});
   };
 
   // Return all elements of an array that don't pass a truth test.
