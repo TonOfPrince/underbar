@@ -8,6 +8,7 @@ var _ = {};
   // seem very useful, but remember it--if a function needs to provide an
   // iterator when the user does not pass one in, this will be handy.
   _.identity = function(val) {
+		return val;
   };
 
   /**
@@ -124,8 +125,8 @@ var _ = {};
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
   	var array = [];
-	;;var fok = window[functionOrKey]['apply'](co
-	;;var fork = eval(
+	//var fok = window[functionOrKey]['apply'](co
+	//var fork = eval(
   	for (var i=0; i<collection.length; i++) {
 		var pusher;
 		if (typeof functionOrKey === "string") {pusher=jQuery.globalEval(concat(functionOrKey,'.apply(collection[i], args)'));}  
