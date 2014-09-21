@@ -105,7 +105,7 @@ var _ = {};
 	var push=function(item) {
 		arr.push(iterator(item));
 	}
-	_.each(arr,push);
+	_.each(collection,push);
 	return arr;
   };
 
