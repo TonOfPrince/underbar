@@ -237,10 +237,27 @@ var _ = {};
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
-	return _.every(collection, iterator);
-	if (iterator=== 'function') {
-	
-	}
+	//return _.every(collection, function() {
+	//});
+	return _.reduce(collection, function(next,item) {
+		var track = false;
+		if (track==true) {
+			track=true;
+		} else if (typeof(iterator) === 'function')  {	
+			if((Boolean(iterator(item)))==true) {
+				track = true;
+			}
+		}
+		else {
+			iterator = _.identity;
+			if((Boolean(iterator(item)))==true) {
+				track = true;
+			}
+			
+		}
+		//next = track;
+		return track;
+	},false);
 	
   };
 
@@ -264,11 +281,44 @@ var _ = {};
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
+	var array = Array.prototype.slice.call(arguments);
+	/*for (var key in array) {
+		if(array.hasOwnProperty(key)) {
+			obj[key]=array[key]
+		}
+	}*/	
+	/*_.each(array,function(key,value,array) {
+			obj[key]=array[key];
+	});*/
+	for (var i=1; i<arguments.length;i++) {
+		for (var key in arguments[i]) {
+			if(arguments[i].hasOwnProperty(key)) {
+				obj[key] = arguments[i][key];
+			}
+		}
+	}
+/*	for (var i=1; i<arguments.length;i++) {
+		_.each(arguments[i],function() {
+			if(arguments[i].hasOwnProperty(key)) {
+				obj[key] = arguments[i][key];
+			}
+		});
+	}  */
+	return obj;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
+	for (var i=1; i<arguments.length;i++) {
+		for (var key in arguments[i]) {
+			if(arguments[i].hasOwnProperty(key)) {
+				if (obj[key]=='') {
+					obj[key] = arguments[i][key];
+				}
+			}
+		}
+	}
   };
 
 
