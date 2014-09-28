@@ -239,7 +239,7 @@ var _ = {};
     // TIP: There's a very clever way to re-use every() here.
 	//return _.every(collection, function() {
 	//});
-	return _.reduce(collection, function(next,item) {
+/*	return _.reduce(collection, function(next,item) {
 		var track = false;
 		if (track==true) {
 			track=true;
@@ -257,7 +257,14 @@ var _ = {};
 		}
 		//next = track;
 		return track;
-	},false);
+	},false);*/
+	
+	for (var i=0; i <collection.length; i++) {
+		if (_.every(collection.slice(i,i+1),iterator)==true) {
+			return true;
+		}
+	}
+	return false;
 	
   };
 
