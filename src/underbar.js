@@ -313,12 +313,14 @@ var _ = {};
 	for (var i=1; i<arguments.length;i++) {
 		for (var key in arguments[i]) {
 			if(arguments[i].hasOwnProperty(key)) {
-				if (obj[key]=='') {
+				if (!(key in obj)) {
 					obj[key] = arguments[i][key];
 				}
+				
 			}
 		}
 	}
+	return obj;
   };
 
 
@@ -398,6 +400,17 @@ var _ = {};
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+	var copy = array.slice(0,array.length);
+	var holder = [];
+	for (var i=0; i<array.length; i++) {
+		while (!(place in holder)) {
+			var place = Math.floor(Math.random()*array.length);
+			copy[i]=array[place];
+			holder.push(place);
+		}
+	return copy;
+		
+	}
   };
 
 
