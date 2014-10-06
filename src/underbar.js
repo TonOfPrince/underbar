@@ -407,17 +407,38 @@ var _ = {};
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
-	var copy = array.slice(0,array.length);
+  /*
+	var copy = []//array.slice(0,array.length);
 	var holder = [];
+	var place = Math.floor(Math.random()*array.length);
 	for (var i=0; i<array.length; i++) {
-		while (!(place in holder)) {
-			var place = Math.floor(Math.random()*array.length);
-			copy[i]=array[place];
-			holder.push(place);
+		while (array[place] in copy) {
+		while ($.inArray(array[place],copy) {
+		//if ($.inArray(array[place],copy)) {
+			place = Math.floor(Math.random()*array.length);
 		}
-	return copy;
+			copy[i]=array[place];
+		
+	/*	while (array[place] in copy)) {
+			var place = Math.floor(Math.random()*array.length);
+		}
+		//holder.push(place);
+		copy[i]=array[place];
 		
 	}
+	return copy;
+	*/
+	var copy = [];
+	var holder = [];
+	for (var i=0; i<array.length; i++) {
+		var place = Math.floor(Math.random()*array.length);
+		while ($.inArray(place,holder)!=-1) {
+			place = Math.floor(Math.random()*array.length);
+		}
+		copy[i] = array[place];
+		holder.push(place);
+	}
+	return copy;
   };
 
 
